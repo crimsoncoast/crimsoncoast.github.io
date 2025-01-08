@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Flipbook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #00002B;
+        }
+        .flipbook {
+            position: relative;
+            width: 100%;
+            max-width: 550px;
+            height: 800px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .flipbook img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+        .flipbook img.active {
+            display: block;
+        }
+        .controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .controls button {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 18px;
+            outline: none;
+        }
+        .controls button:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+	    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Navigation links -->
+    <nav>
+	
+        <ul>
+            <li><a href="../index.html" class="flat-button">Home</a></li>
+            <li><a href="sv.html" class="flat-button">Scarlet & Violet</a></li>
+            <li><a href="sm.html" class="flat-button">Sword & Shield</a></li>
+            <li><a href="misc.html" class="flat-button">Miscellaneous</a></li>
+			<li><a href="binder.html" class="flat-button">AR Binder</a></li>
+        </ul>
+    </nav>
+    <div class="flipbook">
+        <img src="https://i.imgur.com/HKNIWDM.jpeg" alt="Page 1" class="active">
+        <img src="https://i.imgur.com/NDf5c8E.jpeg" alt="Page 2">
+		<img src="https://i.imgur.com/WWv4yHd.jpeg" alt="Page 3">
+		<img src="https://i.imgur.com/LhO26EI.jpeg" alt="Page 4">
+		<img src="https://i.imgur.com/ieHkl9a.jpeg" alt="Page 5">
+        <img src="https://i.imgur.com/9tWzZQz.jpeg" alt="Page 6">
+		<img src="https://i.imgur.com/OSXW9p6.jpeg" alt="Page 7">
+		<img src="https://i.imgur.com/2We3OWt.jpeg" alt="Page 8">
+		<img src="https://i.imgur.com/F6R0mAZ.jpeg" alt="Page 9">
+		<img src="https://i.imgur.com/z7AHiCs.jpeg" alt="Page 10">
+		<img src="https://i.imgur.com/0XGBVDN.jpeg" alt="Page 11">
+		<img src="https://i.imgur.com/188wsnS.jpeg" alt="Page 12">
+		<img src="https://i.imgur.com/8GtgNor.jpeg" alt="Page 13">
+		<img src="https://i.imgur.com/beetMPa.jpeg" alt="Page 14">
+		<img src="https://i.imgur.com/VLVXpUB.jpeg" alt="Page 15">  
+		<img src="https://i.imgur.com/V99AGVY.jpeg" alt="Page 16">
+		<img src="https://i.imgur.com/jzfBhb6.jpeg" alt="Page 17">
+		<img src="https://i.imgur.com/7DVuW6j.jpeg" alt="Page 18">
+		<img src="https://i.imgur.com/N9kOjfA.jpeg" alt="Page 19">
+		<img src="https://i.imgur.com/eQtMlbV.jpeg" alt="Page 20"> 
+		
+        <div class="controls">
+            <button id="prev">‹</button>
+            <button id="next">›</button>
+        </div>
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.flipbook img');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+    </script>
+</body>
+</html>
